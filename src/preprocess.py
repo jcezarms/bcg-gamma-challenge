@@ -5,18 +5,20 @@ import pandas as pd
 
 DATAPATH = '../data/'
 
+def kwargs_defaults_merge(defaults, kwargs):
+    remaining_defaults = { k: v for k, v in defaults.items() if k not in kwargs.keys() }
+    return { **remaining_defaults, **kwargs }
 
-def read_to_df(filename):
+def read_to_df(filename, kwargs):
     filepath = os.path.join(DATAPATH, 'raw', filename)
-    if filename == 'rf_leitos_de_internacao.csv':
-        skiprows = 3
-    else:
-        skiprows = 4
+    skiprows = 3 if filename == 'rf_leitos_de_internacao.csv' else 4
 
-    return pd.read_csv(filepath,
-                       encoding='latin-1',
-                       sep=';',
-                       skiprows=skiprows)
+    kwargs = kwargs_defaults_merge(defaults={'encoding':'latin-1',
+                                             'sep':';',
+                                             'skiprows':skiprows},
+                                   kwargs=kwargs)
+    
+    return pd.read_csv(filepath, **kwargs)
 
 
 def normalize_columns(df):
