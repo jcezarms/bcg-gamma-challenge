@@ -5,18 +5,11 @@ import pandas as pd
 
 DATAPATH = '../data/'
 
-
 def read_to_df(filename):
     filepath = os.path.join(DATAPATH, 'raw', filename)
-    if filename == 'rf_leitos_de_internacao.csv':
-        skiprows = 3
-    else:
-        skiprows = 4
-
-    return pd.read_csv(filepath,
-                       encoding='latin-1',
-                       sep=';',
-                       skiprows=skiprows)
+    skiprows = 3 if filename == 'rf_leitos_de_internacao.csv' else 4
+    
+    return pd.read_csv(filepath, encoding='latin-1', sep=';', skiprows=skiprows)
 
 
 def normalize_columns(df):
