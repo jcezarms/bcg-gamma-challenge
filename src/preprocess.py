@@ -1,5 +1,7 @@
 import os
 import unidecode
+import shapefile
+
 
 import pandas as pd
 
