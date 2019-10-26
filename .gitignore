@@ -1,6 +1,8 @@
 # Raw data in this project is too heavy for Git
 data/raw/*.csv
 data/raw/*.zip
+data/raw/preprocessed/*.csv
+data/raw/preprocessed/*.zip
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
