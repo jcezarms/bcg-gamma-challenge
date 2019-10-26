@@ -92,3 +92,5 @@ LAYOUT_APAC = {
     'AR_NUMC2': 'ar_num_ins_2',
     'AR_NUMC3': 'ar_num_ins_3'
 }
+
+REVERSE_LAYOUT = { v: k for k, v in LAYOUT_APAC.items() }
