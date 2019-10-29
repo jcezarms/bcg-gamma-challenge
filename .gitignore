@@ -1,3 +1,6 @@
+# Ignoring local model pickles
+models/*.pkl
+
 # Raw data in this project is too heavy for Git
 data/raw/*.csv
 data/raw/*.zip
