@@ -48,3 +48,11 @@ def combine(files):
         dfs_list.append(df)
 
     return pd.concat(dfs_list, axis=1)
+	
+
+def to_date(df, cols_to_transform, period='DAY'):
+    if period == 'DAY':
+        df[cols_to_transform] = df[cols_to_transform].apply(lambda x: pd.to_datetime(x, format='%Y%m%d', errors='coerce'))
+    elif period == 'MONTH':
+        df[cols_to_transform] = df[cols_to_transform].apply(lambda x: pd.to_datetime(x, format='%Y%m').dt.to_period('M'))
+    return df
